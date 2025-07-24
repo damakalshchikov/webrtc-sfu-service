@@ -1,67 +1,35 @@
-# WebRTC SFU Service
+# WebRTC SFU Сервис
 
-A scalable Selective Forwarding Unit (SFU) service for WebRTC applications.
+Cервис Selective Forwarding Unit (SFU) для WebRTC приложений.
 
-## Overview
+## Обзор
 
-This service provides a WebRTC SFU implementation that allows for efficient media routing in real-time communication applications. The SFU acts as an intermediary that receives media streams from multiple participants and selectively forwards them to other participants, reducing the bandwidth requirements compared to a full mesh topology.
+Этот сервис предоставляет реализацию WebRTC SFU, которая позволяет эффективно маршрутизировать медиапотоки в приложениях реального времени. SFU выступает в качестве посредника, который получает медиапотоки от нескольких участников и выборочно пересылает их другим участникам, уменьшая требования к пропускной способности по сравнению с полносвязной топологией.
 
-## Features
+## Возможности
 
-- Scalable architecture for handling multiple participants
-- Selective forwarding of audio/video streams
-- Support for multiple codecs
-- RESTful API for session management
-- WebSocket signaling for real-time communication
+- Выборочная передача аудио/видео потоков
+- Поддержка нескольких кодеков
+- WebSocket сигнализация для связи в реальном времени
 
-## Getting Started
+### Предварительные требования
 
-### Prerequisites
+- Go 1.19 или выше
+- Docker (опционально, для контейнеризированного развертывания)
 
-- Go 1.19 or higher
-- Docker (optional, for containerized deployment)
-
-### Installation
+### Установка
 
 ```bash
-# Clone the repository
+# Клонирование репозитория
 git clone https://github.com/damakalshchikov/webrtc-sfu-service.git
 cd webrtc-sfu-service
 
-# Install dependencies
+# Установка зависимостей
 go mod tidy
 
-# Build the service
+# Сборка сервиса
 go build -o sfu-service
 
-# Run the service
+# Запуск сервиса
 ./sfu-service
 ```
-
-### Configuration
-
-The service can be configured using environment variables:
-
-- `LISTEN_ADDR`: Address to listen on (default: ":8080")
-- `TURN_SERVER`: TURN server URL (if required)
-- `STUN_SERVER`: STUN server URL (default: "stun:stun.l.google.com:19302")
-
-## API Documentation
-
-Detailed API documentation can be found in the [API Docs](docs/api.md).
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-Project maintainer - [@damakalshchikov](https://github.com/damakalshchikov)
