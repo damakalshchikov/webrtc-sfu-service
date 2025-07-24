@@ -33,3 +33,5 @@ go build -o sfu-service
 # Запуск сервиса
 ./sfu-service
 ```
+
+Затем переходите по адрессу http://localhost:8080
