@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC SFU - Видеоконференция</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>🎥 WebRTC SFU Конференция</h1>
+            <div class="connection-status">
+                <span id="connectionStatus" class="status-indicator offline">Не подключен</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Панель управления -->
+            <section class="control-panel">
+                <div class="controls-group">
+                    <button id="joinBtn" class="btn btn-primary">
+                        <span class="btn-icon">🔗</span>
+                        Подключиться
+                    </button>
+                    <button id="leaveBtn" class="btn btn-secondary" disabled>
+                        <span class="btn-icon">🚪</span>
+                        Покинуть
+                    </button>
+                </div>
+
+                <div class="media-controls">
+                    <button id="toggleVideo" class="btn btn-media" disabled>
+                        <span class="btn-icon">📹</span>
+                        <span class="btn-text">Видео</span>
+                    </button>
+                    <button id="toggleAudio" class="btn btn-media" disabled>
+                        <span class="btn-icon">🎤</span>
+                        <span class="btn-text">Аудио</span>
+                    </button>
+                </div>
+
+                <div class="info-panel">
+                    <div class="participant-count">
+                        <span class="info-label">Участников:</span>
+                        <span id="participantCount">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Видео секция -->
+            <section class="video-section">
+                <!-- Локальное видео -->
+                <div class="local-video-container">
+                    <div class="video-wrapper local">
+                        <video id="localVideo" autoplay muted playsinline></video>
+                        <div class="video-overlay">
+                            <span class="video-label">Вы</span>
+                            <div class="video-controls">
+                                <span id="localAudioStatus" class="audio-status">🎤</span>
+                                <span id="localVideoStatus" class="video-status">📹</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Удаленные видео -->
+                <div class="remote-videos-container">
+                    <div id="remoteVideos" class="remote-videos-grid"></div>
+                    <div id="noParticipants" class="no-participants">
+                        <div class="placeholder-icon">👥</div>
+                        <p>Ожидаем других участников...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Панель статистики (скрытая по умолчанию) -->
+        <aside id="statsPanel" class="stats-panel hidden">
+            <div class="stats-header">
+                <h3>📊 Статистика соединения</h3>
+                <button id="toggleStats" class="btn-close">×</button>
+            </div>
+            <div class="stats-content">
+                <div class="stat-item">
+                    <span class="stat-label">Состояние:</span>
+                    <span id="connectionState">—</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">ICE состояние:</span>
+                    <span id="iceState">—</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Время подключения:</span>
+                    <span id="connectionTime">—</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Лог панель -->
+        <section class="log-section">
+            <div class="log-header">
+                <h3>📝 Журнал событий</h3>
+                <div class="log-controls">
+                    <button id="showStatsBtn" class="btn btn-small">Статистика</button>
+                    <button id="clearLogsBtn" class="btn btn-small">Очистить</button>
+                </div>
+            </div>
+            <div id="logContainer" class="log-container"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
